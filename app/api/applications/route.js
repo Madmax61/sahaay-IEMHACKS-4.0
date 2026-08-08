@@ -1,0 +1,5 @@
+import { NextResponse } from "next/server";
+import { getDb } from "@/lib/mongodb";
+const DEMO_USER_ID="demo-user";
+export async function GET(){try{const db=await getDb();const applications=await db.collection("applications").find({userId:DEMO_USER_ID}).sort({createdAt:-1}).project({_id:0}).toArray();return NextResponse.json({applications});}catch(e){return NextResponse.json({error:e.message},{status:500});}}
+export async function POST(request){try{const body=await request.json();const db=await getDb();const application={userId:DEMO_USER_ID,applicationId:`APP-${Date.now().toString().slice(-7)}`,schemeId:body.schemeId,scheme:body.scheme,status:body.status||"Ready to apply",progress:body.progress??75,officialUrl:body.officialUrl,missingDocuments:body.missingDocuments||[],createdAt:new Date(),updatedAt:new Date()};await db.collection("applications").insertOne(application);const {_id,...safe}=application;return NextResponse.json({application:safe});}catch(e){return NextResponse.json({error:e.message},{status:500});}}
