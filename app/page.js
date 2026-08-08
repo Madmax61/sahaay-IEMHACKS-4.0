@@ -1,1 +1,1 @@
-import SahaayApp from '@/components/SahaayApp';export default function Page(){return <SahaayApp/>}
+import SahaayApp from '@/components/SahaayApp'; export default function Page(){return <SahaayApp/>}

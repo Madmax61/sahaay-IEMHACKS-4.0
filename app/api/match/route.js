@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextResponse } from "next/server";
 import { matchSchemes } from "@/lib/eligibility";
 import { ensureSeedData } from "@/lib/seed";
