@@ -1,2 +1,0 @@
-"use client";
-export default function StatCard({label,value,note,icon:Icon}){return <div className="card p-5"><div className="flex items-start justify-between"><div><div className="text-xs font-semibold uppercase tracking-wider text-muted">{label}</div><div className="mt-2 text-2xl font-bold tracking-tight">{value}</div></div>{Icon&&<div className="rounded-xl bg-lime p-2.5 text-leaf"><Icon size={19}/></div>}</div>{note&&<div className="mt-2 text-xs text-muted">{note}</div>}</div>}
