@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextResponse } from "next/server";
 import { ensureSeedData } from "@/lib/seed";
 export async function GET(){try{const db=await ensureSeedData();const complaints=await db.collection("complaints").find({}).sort({createdAt:-1}).project({_id:0}).limit(100).toArray();return NextResponse.json({complaints});}catch(e){return NextResponse.json({error:e.message},{status:500});}}
